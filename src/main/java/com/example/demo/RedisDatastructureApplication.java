@@ -1,5 +1,8 @@
 package com.example.demo;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -21,6 +24,20 @@ public class RedisDatastructureApplication {
 
 		jedis.lpush("list-key", "traing","day1","day2"); // List
 		System.out.println(jedis.lrange("list-key",0,-1));
+		
+		Map<String, String> siteCount = new HashMap<>();
+		siteCount.put("google", "100000");
+		siteCount.put("yahoo", "30000");
+		siteCount.put("linkedin", "50000");
+		
+		jedis.hset("site-count", siteCount); //Hash 
+		System.out.println(jedis.hgetAll("site-count"));
+		
+		jedis.sadd("countries", "USA","UK","India","Argentina","Brazil","Canada","Mexico","Argentina","Germany"); //set
+		System.out.println(jedis.smembers("countries"));
+		
+		jedis.zadd("site-rank-visits", 100000,"google"); //sorted set
+
 
 	}
 

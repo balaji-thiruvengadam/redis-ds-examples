@@ -30,7 +30,7 @@ public class RedisDatastructureApplication {
 		siteCount.put("yahoo", "30000");
 		siteCount.put("linkedin", "50000");
 		
-		jedis.hset("site-count", siteCount); //Hash 
+		jedis.hset("site-count", siteCount); //Hash
 		System.out.println(jedis.hgetAll("site-count"));
 		
 		jedis.sadd("countries", "USA","UK","India","Argentina","Brazil","Canada","Mexico","Argentina","Germany"); //set
